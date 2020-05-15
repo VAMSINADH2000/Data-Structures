@@ -1,0 +1,26 @@
+from collections import deque
+class stack:
+    def __init__(self):
+        self.container = deque()
+
+    def push(self, data): #Push on Top
+        self.container.append(data)
+    def pop(self): #Pop top Element
+        return self.container.pop()
+    def peek(self):#print Top element
+        return self.container[-1]
+    def isempty(self):#Checks Empty Or Not
+        return len(self.container)==0
+    def size(self): #return Size of Stack
+        return len(self.container)
+
+
+newstack = stack()
+newstack.push("1")
+newstack.push("2")
+newstack.push("3")
+newstack.push("4")
+print(newstack.getstack())
+newstack.pop()
+print(newstack.getstack())
+print(newstack.isempty())
