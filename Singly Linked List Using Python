@@ -1,0 +1,78 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+
+class linkedlist:
+    def __init__(self):
+        self.head = None
+
+    def insert(self, newnode): #insert element at end
+        if self.head is None:
+            self.head = newnode
+        else:
+            currentnnode = self.head
+            while True:
+                if currentnnode.next is None:
+                    break
+                currentnnode = currentnnode.next
+            currentnnode.next = newnode
+
+    def printlist(self): #to print elements in List
+        if self.head is None:
+            print("The List is Empty")
+        presnode = self.head
+        while True:
+            if presnode is None:
+                break
+            print(presnode.data, "-->", end="")
+            presnode = presnode.next
+
+    def insert_at_beginning(self, newnode): #insert at beginning
+        current = self.head
+        self.head = newnode
+        newnode.next = current
+
+    def insert_at_middle(self, afternode, newnode): #insert At Midle
+
+        temp = afternode.next
+        afternode.next = newnode
+        newnode.next = temp
+
+    def deletenode(self, node): #deleting a node
+        currentnode = self.head
+        while True:
+            if currentnode.next == node:
+                break
+            currentnode = currentnode.next
+        currentnode.next = node.next
+    def deleteat(self,pos): #deleting Node At particular Position
+        current = self.head
+        count = 0
+        while count!=pos:
+            if pos == 0:
+                del self.head
+                print(f"element deleted at {pos}")
+                break
+            prev = current
+            count +=1
+            current = current.next
+            prev.next = current.next
+            print(f"Element deleted is {current.data}")
+            del current
+
+node1 = Node("Krishna")
+node2 = Node("Vamsi")
+node3 = Node("Nadh")
+lst = linkedlist()
+lst.insert(node1)
+lst.insert_at_beginning(node2)
+lst.insert(node3)
+node4 = Node("123")
+node5 = Node("456")
+lst.insert_at_beginning(node4)
+lst.insert_at_middle(node2, node5)
+lst.deletenode(node5)
+lst.deleteat(1)
+lst.printlist()
